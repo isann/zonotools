@@ -11,6 +11,9 @@ func IsError(err error) bool {
 func IsNoError(err error) bool {
 	return err == nil
 }
+func IsNotError(err error) bool {
+	return IsNoError(err)
+}
 func StringResponseBody(resp *http.Response) string {
 	b, err := ioutil.ReadAll(resp.Body)
 	if err == nil {
