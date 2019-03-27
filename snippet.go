@@ -21,7 +21,3 @@ func StringResponseBody(resp *http.Response) string {
 	}
 	return ""
 }
-
-func Print() {
-	print("v1.1")
-}
