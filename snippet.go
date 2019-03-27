@@ -22,5 +22,5 @@ func StringResponseBody(resp *http.Response) string {
 	return ""
 }
 func Print() {
-	print("v2.0.0")
+	print("v2.0.1")
 }
