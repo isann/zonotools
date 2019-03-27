@@ -1,1 +1,1 @@
-module github.com/isann/zonotools
+module github.com/isann/zonotools/v2
