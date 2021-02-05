@@ -24,3 +24,11 @@ func StringResponseBody(resp *http.Response) string {
 func Print() {
 	print("v2.0.1")
 }
+
+func IsExistKey(m map[interface{}]interface{}, key interface{}) (interface{}, bool) {
+	if val, ok := m[key]; ok {
+		return val, ok
+	} else {
+		return val, ok
+	}
+}
