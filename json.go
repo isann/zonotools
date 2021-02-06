@@ -2,10 +2,11 @@ package zonotools
 
 import "encoding/json"
 
-func DecodeJson(data map[interface{}]interface{}) ([]byte, error) {
+func DecodeJson(data interface{}) ([]byte, error) {
 	return json.Marshal(data)
 }
 
-func EncodeJson(jsonString string, data *map[interface{}]interface{}) error {
+// Data required pointer
+func EncodeJson(jsonString string, data interface{}) error {
 	return json.Unmarshal([]byte(jsonString), data)
 }
