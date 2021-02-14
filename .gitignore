@@ -1,3 +1,6 @@
 *.iml
 .idea
 .DS_Store
+a.png
+dst.png
+dst-rotation.png
