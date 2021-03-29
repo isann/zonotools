@@ -2,7 +2,7 @@
 
 自分用の便利スニペット集です。 ネットで集めてきた、コピペ故に覚えられなさそうなものとかを集めています。 ただそれだけです。
 
-# Getting start
+# Getting started
 
 ```
 go get github.com/isann/zonotools/v2
