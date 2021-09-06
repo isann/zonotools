@@ -4,8 +4,16 @@
 
 # Getting started
 
+はじめに `go get` します。
+
 ```
 go get github.com/isann/zonotools/v2
+```
+
+次に、 go ファイルないで `import` で利用できます。
+
+```
+import "github.com/isann/zonotools/v2"
 ```
 
 # Notes
