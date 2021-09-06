@@ -124,9 +124,16 @@ func (timer *Timer) Start() {
 
 func (timer *Timer) End() {
 	timer.endTime = time.Now().UnixNano()
-	timer.elapsed = (timer.endTime - timer.startTime) / int64(time.Millisecond)
+	timer.elapsed = timer.endTime - timer.startTime
 }
 
 func (timer *Timer) PrintElapsed(vars ...interface{}) {
-	log.Println("elapsed[ms]:", timer.elapsed, vars)
+	e := timer.elapsed / int64(time.Millisecond)
+	log.Println("elapsed[ms]:", e, vars)
+}
+
+// Elapsed は、処理時間を返します。
+// 単位は、ナノ秒です。
+func (timer *Timer) Elapsed() int64 {
+	return timer.elapsed
 }
