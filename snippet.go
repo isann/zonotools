@@ -2,6 +2,7 @@ package zonotools
 
 import (
 	"io/ioutil"
+	"log"
 	"net/http"
 	"reflect"
 	"time"
@@ -97,4 +98,35 @@ func ToPtrTime(layout, timeString string) *time.Time {
 	// JST から UTC に
 	nowTime = nowTime.Add(-9 * time.Hour)
 	return &nowTime
+}
+
+// Timer は、処理時間を計測します。
+type Timer struct {
+	startTime int64
+	endTime   int64
+	// nano second
+	elapsed int64
+}
+
+func (timer *Timer) New() *Timer {
+	return &Timer{}
+}
+
+func (timer *Timer) NewAndStart() *Timer {
+	t := &Timer{}
+	t.Start()
+	return t
+}
+
+func (timer *Timer) Start() {
+	timer.startTime = time.Now().UnixNano()
+}
+
+func (timer *Timer) End() {
+	timer.endTime = time.Now().UnixNano()
+	timer.elapsed = (timer.endTime - timer.startTime) / int64(time.Millisecond)
+}
+
+func (timer *Timer) PrintElapsed(vars ...interface{}) {
+	log.Println("elapsed[ms]:", timer.elapsed, vars)
 }
