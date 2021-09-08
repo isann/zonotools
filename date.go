@@ -82,6 +82,7 @@ func AddTime(t time.Time, num int64, unit int) time.Time {
 }
 
 // CompareTime は、 time.Time 型のパラメータを expr の式で比較した結果を返します。
+// expr には、 "==", "<", "<=", ">", ">=" のいずれかを指定します。
 func CompareTime(a time.Time, expr string, b time.Time) bool {
 	result := false
 	switch expr {
