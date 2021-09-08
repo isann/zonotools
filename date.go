@@ -42,7 +42,7 @@ func ParseTime(timeString, layout string) (time.Time, error) {
 }
 
 const (
-	// default UnitNanosecond
+	// UnitNanosecond がデフォルトです
 	UnitNanosecond = iota
 	UnitMicrosecond
 	UnitMillisecond
@@ -51,7 +51,8 @@ const (
 	UnitHour
 )
 
-// 日付を加減算する、unit は UnitNanosecond ~ UnitHour から指定
+// AddTime は、日付を加減算します。
+// unit は UnitNanosecond ~ UnitHour から指定します。
 func AddTime(t time.Time, num int64, unit int) time.Time {
 	var u time.Duration
 	switch unit {
@@ -71,4 +72,24 @@ func AddTime(t time.Time, num int64, unit int) time.Time {
 		u = time.Nanosecond
 	}
 	return t.Add(time.Duration(num) * u)
+}
+
+// CompareTime は、 time.Time 型のパラメータを expr の式で比較した結果を返します。
+func CompareTime(a time.Time, expr string, b time.Time) bool {
+	result := false
+	switch expr {
+	case "==":
+		result = a.Equal(b)
+	case "<":
+		result = a.Before(b)
+	case ">":
+		result = a.After(b)
+	case "<=":
+		result = a.Equal(b) || a.Before(b)
+	case ">=":
+		result = a.Equal(b) || a.After(b)
+	default:
+		result = false
+	}
+	return result
 }

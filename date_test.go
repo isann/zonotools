@@ -131,3 +131,114 @@ func TestParseTime(t *testing.T) {
 	//	})
 	//}
 }
+
+func TestCompareTime(t *testing.T) {
+
+	layout := TimeStdLongYear + "/" + TimeStdZeroMonth + "/" + TimeStdZeroDay + " " + TimeStdHour + ":" + TimeStdZeroMinute + "." + TimeStdZeroSecond
+
+	// ==
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.00"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.00"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, "==", b)
+		assert.Equal(t, result, true)
+	})
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.00"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2001/01/01 10:00.00"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, "==", b)
+		assert.Equal(t, result, false)
+	})
+
+	// >
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.00"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.01"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, ">", b)
+		assert.Equal(t, result, false)
+	})
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.01"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.00"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, ">", b)
+		assert.Equal(t, result, true)
+	})
+
+	// <
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.01"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.00"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, "<", b)
+		assert.Equal(t, result, false)
+	})
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.00"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.01"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, "<", b)
+		assert.Equal(t, result, true)
+	})
+
+	// >=
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.00"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.00"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, ">=", b)
+		assert.Equal(t, result, true)
+	})
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.01"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.00"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, ">=", b)
+		assert.Equal(t, result, true)
+	})
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.00"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.01"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, ">=", b)
+		assert.Equal(t, result, false)
+	})
+
+	// <=
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.00"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.00"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, "<=", b)
+		assert.Equal(t, result, true)
+	})
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.01"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.00"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, "<=", b)
+		assert.Equal(t, result, false)
+	})
+	t.Run("normal", func(t *testing.T) {
+		timeStringA := "2000/01/01 10:00.00"
+		a, _ := ParseTime(timeStringA, layout)
+		timeStringB := "2000/01/01 10:00.01"
+		b, _ := ParseTime(timeStringB, layout)
+		result := CompareTime(a, "<=", b)
+		assert.Equal(t, result, true)
+	})
+}
