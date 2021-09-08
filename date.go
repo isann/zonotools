@@ -55,17 +55,17 @@ const (
 func AddTime(t time.Time, num int64, unit int) time.Time {
 	var u time.Duration
 	switch unit {
-	case 0:
+	case UnitNanosecond:
 		u = time.Nanosecond
-	case 1:
+	case UnitMicrosecond:
 		u = time.Microsecond
-	case 2:
+	case UnitMillisecond:
 		u = time.Millisecond
-	case 3:
+	case UnitSecond:
 		u = time.Second
-	case 4:
+	case UnitMinute:
 		u = time.Minute
-	case 5:
+	case UnitHour:
 		u = time.Hour
 	default:
 		u = time.Nanosecond
