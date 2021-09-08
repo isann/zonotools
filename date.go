@@ -32,7 +32,11 @@ const (
 )
 
 // FormatTime は、 time.Time オブジェクトを指定した日付レイアウトの文字列に変換します。
+// layout は "2006/01/02 15:04:05" のような日付レイアウトです。
 func FormatTime(time time.Time, layout string) string {
+	if layout == "" {
+		layout = "2006/01/02 15:04:05"
+	}
 	return time.Format(layout)
 }
 
