@@ -31,14 +31,21 @@ const (
 	TimeStdNumColonTZ     = "-07:00" // always numeric
 )
 
-// time.Time オブジェクトを指定した日付レイアウトの文字列に変換
+// FormatTime は、 time.Time オブジェクトを指定した日付レイアウトの文字列に変換します。
 func FormatTime(time time.Time, layout string) string {
 	return time.Format(layout)
 }
 
-// 文字列の日付レイアウトを指定して Time オブジェクトに変換
+// ParseTime は文字列の日付レイアウトを指定して Time オブジェクトに変換に変換します。
+// タイムゾーンは UTC になります。
 func ParseTime(timeString, layout string) (time.Time, error) {
 	return time.Parse(layout, timeString)
+}
+
+// ParseTimeInLocation は文字列の日付レイアウトを指定して Time オブジェクトに変換に変換します。
+// local でタイムゾーンを指定できます。
+func ParseTimeInLocation(timeString, layout string, local *time.Location) (time.Time, error) {
+	return time.ParseInLocation(layout, timeString, local)
 }
 
 const (
