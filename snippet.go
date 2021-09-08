@@ -86,17 +86,14 @@ func ToPtrI64(i int64) *int64 {
 	return &i
 }
 
-// ToPtrTime は、文字列を time.Time 型に変換します
+// ToPtrTime は、文字列を time.Time 型に変換します。
 //
-// layout 日付文字列のレイアウトを指定します
-// timeString 日付文字列
-func ToPtrTime(layout, timeString string) *time.Time {
+// layout には日付文字列のレイアウト、 timeString には日付文字列、 local にはタイムゾーンを指定します。
+func ToPtrTime(layout, timeString string, local *time.Location) *time.Time {
 	if layout == "" {
 		layout = "2006/01/02 15:04.05"
 	}
-	nowTime, _ := time.Parse(layout, timeString)
-	// JST から UTC に
-	nowTime = nowTime.Add(-9 * time.Hour)
+	nowTime, _ := time.ParseInLocation(layout, timeString, local)
 	return &nowTime
 }
 
