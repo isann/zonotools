@@ -29,12 +29,26 @@ func Print() {
 }
 
 // IsExistKey は、マップに key が存在するかどうかを判定します。
+//
+// Deprecated: IsExistsKey を使用してください。
 func IsExistKey(m map[interface{}]interface{}, key interface{}) (interface{}, bool) {
 	if val, ok := m[key]; ok {
 		return val, ok
 	} else {
 		return val, ok
 	}
+}
+
+// IsExistsKey は、マップにキーが存在するかどうかを判定します。
+// m が map ではない場合も false になります。
+func IsExistsKey(m, k interface{}) bool {
+	defer func() {
+		_ = recover()
+	}()
+	mapValue := reflect.ValueOf(m)
+	keyValue := reflect.ValueOf(k)
+	v := mapValue.MapIndex(keyValue)
+	return v != reflect.Value{}
 }
 
 // Mapper は、 構造体 org のプロパティを copy にマッピングします。
