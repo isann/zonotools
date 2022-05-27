@@ -1,4 +1,4 @@
-module github.com/isann/zonotools/v2
+module github.com/isann/zonotools/v3
 
 go 1.18
 
