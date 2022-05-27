@@ -20,7 +20,7 @@ func TestEncodeJson(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := EncodeJson(tt.args.jsonString, tt.args.data); (err != nil) != tt.wantErr {
+			if err := EncodeJson(tt.args.jsonString, &tt.args.data); (err != nil) != tt.wantErr {
 				t.Errorf("EncodeJson() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
@@ -37,16 +37,17 @@ func TestEncodeJson(t *testing.T) {
 		assert.Equal(t, 123, s.Id)
 		assert.Equal(t, "test", s.Name)
 	})
-	t.Run("fail", func(t *testing.T) {
-		s := struct {
-			Id   int    `json:"id"`
-			Name string `json:"name"`
-		}{}
-		err := EncodeJson(`{"id":123, "name":"test"}`, s)
-		if err == nil {
-			t.Fail()
-		}
-	})
+	// ジェネリクスによりテスト不要、コンパイル時にエラー検出
+	//t.Run("fail", func(t *testing.T) {
+	//	s := struct {
+	//		Id   int    `json:"id"`
+	//		Name string `json:"name"`
+	//	}{}
+	//	err := EncodeJson(`{"id":123, "name":"test"}`, s)
+	//	if err == nil {
+	//		t.Fail()
+	//	}
+	//})
 }
 
 func TestDecodeJson(t *testing.T) {
