@@ -52,11 +52,11 @@ func IsExistsKey[T comparable, U any](m map[T]U, k T) bool {
 }
 
 // Mapper は、 構造体 org のプロパティを copy にマッピングします。
+// 構造体は同じ型でなくても受け渡しでき、プロパティ名が同じものをコピーします。
 //
-// 引数は構造体のアドレスを指定して、参照渡しとしてください。
 // 第一引数の構造体の値を第二引数の構造体にコピーします。
 // コピーするフィールド名は同じフィールド名のもののみです。
-func Mapper(org, copy interface{}) {
+func Mapper[T, U any](org *T, copy *U) {
 
 	// check pointer
 	if reflect.TypeOf(org).String()[:1] != "*" || reflect.TypeOf(copy).String()[:1] != "*" {

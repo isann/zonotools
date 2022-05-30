@@ -51,22 +51,23 @@ func TestMapper(t *testing.T) {
 		assert.Equal(t, a1.Num, a2.Num)
 		assert.NotEqual(t, a1.Foo, a2.Bar)
 	})
-	t.Run("fail-01", func(t *testing.T) {
-		a1 := TestOrgStruct{"a", 1, map[string]string{}}
-		a2 := TestCopyStruct{}
-		Mapper(a1, a2)
-		assert.NotEqual(t, a1.Name, a2.Name)
-		assert.NotEqual(t, a1.Num, a2.Num)
-		assert.NotEqual(t, a1.Foo, a2.Bar)
-	})
-	t.Run("fail-02", func(t *testing.T) {
-		a1 := TestOrgStruct2{"a", 1, map[string]string{}}
-		a2 := TestCopyStruct{}
-		Mapper(a1, a2)
-		assert.NotEqual(t, a1.AName, a2.Name)
-		assert.NotEqual(t, a1.ANum, a2.Num)
-		assert.NotEqual(t, a1.AFoo, a2.Bar)
-	})
+	// Generics により参照型の受け渡し以外ビルドエラーとなるので次のテストコードは不要になった
+	//t.Run("fail-01", func(t *testing.T) {
+	//	a1 := TestOrgStruct{"a", 1, map[string]string{}}
+	//	a2 := TestCopyStruct{}
+	//	Mapper(a1, a2)
+	//	assert.NotEqual(t, a1.Name, a2.Name)
+	//	assert.NotEqual(t, a1.Num, a2.Num)
+	//	assert.NotEqual(t, a1.Foo, a2.Bar)
+	//})
+	//t.Run("fail-02", func(t *testing.T) {
+	//	a1 := TestOrgStruct2{"a", 1, map[string]string{}}
+	//	a2 := TestCopyStruct{}
+	//	Mapper(a1, a2)
+	//	assert.NotEqual(t, a1.AName, a2.Name)
+	//	assert.NotEqual(t, a1.ANum, a2.Num)
+	//	assert.NotEqual(t, a1.AFoo, a2.Bar)
+	//})
 }
 
 func TestIsExistsKey(t *testing.T) {
