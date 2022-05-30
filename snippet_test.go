@@ -68,3 +68,31 @@ func TestMapper(t *testing.T) {
 		assert.NotEqual(t, a1.AFoo, a2.Bar)
 	})
 }
+
+func TestIsExistsKey(t *testing.T) {
+	t.Run("normal", func(t *testing.T) {
+		m := map[string]string{"abc": "123"}
+		ret := IsExistsKey(m, "abc")
+		assert.Equal(t, true, ret)
+	})
+	t.Run("normal", func(t *testing.T) {
+		m := map[string]string{"abc": "123"}
+		ret := IsExistsKey(m, "aaa")
+		assert.False(t, ret)
+	})
+}
+
+func TestIsExistKey(t *testing.T) {
+	t.Run("normal", func(t *testing.T) {
+		m := map[string]string{"abc": "123"}
+		val, ret := IsExistKey(m, "abc")
+		assert.True(t, ret)
+		assert.Equal(t, "123", val)
+	})
+	t.Run("normal", func(t *testing.T) {
+		m := map[string]int64{"abc": int64(123)}
+		val, ret := IsExistKey(m, "abc")
+		assert.True(t, ret)
+		assert.Equal(t, int64(123), val)
+	})
+}

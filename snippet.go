@@ -29,9 +29,7 @@ func Print() {
 }
 
 // IsExistKey は、マップに key が存在するかどうかを判定します。
-//
-// Deprecated: IsExistsKey を使用してください。
-func IsExistKey(m map[interface{}]interface{}, key interface{}) (interface{}, bool) {
+func IsExistKey[T comparable, U any](m map[T]U, key T) (U, bool) {
 	if val, ok := m[key]; ok {
 		return val, ok
 	} else {
@@ -41,7 +39,9 @@ func IsExistKey(m map[interface{}]interface{}, key interface{}) (interface{}, bo
 
 // IsExistsKey は、マップにキーが存在するかどうかを判定します。
 // m が map ではない場合も false になります。
-func IsExistsKey(m, k interface{}) bool {
+//
+// Deprecated: Generics によりこの関数での reflect による処理は不要
+func IsExistsKey[T comparable, U any](m map[T]U, k T) bool {
 	defer func() {
 		_ = recover()
 	}()
