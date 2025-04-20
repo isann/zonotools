@@ -22,6 +22,9 @@ func GetFormFile(r *http.Request, key string) (multipart.File, *multipart.FileHe
 }
 
 func GetRequestBody(r *http.Request) ([]byte, error) {
+	if r.Body == nil {
+		return []byte{}, nil
+	}
 	return ioutil.ReadAll(r.Body)
 }
 
