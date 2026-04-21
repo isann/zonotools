@@ -1,10 +1,10 @@
 module github.com/isann/zonotools/v3
 
-go 1.22
+go 1.25.0
 
 require (
 	github.com/stretchr/testify v1.9.0
-	golang.org/x/image v0.18.0
+	golang.org/x/image v0.38.0
 )
 
 require (
