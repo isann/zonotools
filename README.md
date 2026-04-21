@@ -7,18 +7,24 @@
 はじめに `go get` します。
 
 ```
-# v3 ( >= 1.25 )
-go get github.com/isann/zonotools/v3
+# v4 ( >= 1.25 )
+go get github.com/isann/zonotools/v4
 ```
 
 次に、 go ファイルないで `import` で利用できます。
 
 ```
-import "github.com/isann/zonotools/v3"
+import "github.com/isann/zonotools/v4"
 ```
 
 # Notes
 ## Old version
+
+```
+# v3 ( >= 1.18 )
+go get github.com/isann/zonotools/v3
+```
+
 ```
 // v2 ( < 1.18 )
 go get github.com/isann/zonotools/v2
