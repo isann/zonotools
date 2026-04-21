@@ -7,7 +7,7 @@
 はじめに `go get` します。
 
 ```
-# v3 ( >= 1.18 )
+# v3 ( >= 1.25 )
 go get github.com/isann/zonotools/v3
 ```
 
