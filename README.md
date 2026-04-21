@@ -21,7 +21,7 @@ import "github.com/isann/zonotools/v4"
 ## Old version
 
 ```
-# v3 ( >= 1.18 )
+# v3 ( >= 1.22 )
 go get github.com/isann/zonotools/v3
 ```
 
